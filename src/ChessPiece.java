@@ -20,9 +20,9 @@ public abstract class ChessPiece {
         return toLine <= 7 && toLine >= 0 && toColumn <= 7 && toColumn >= 0;
     }
 
-   /* public abstract boolean isMovingWithoutCollision(ChessBoard chessBoard,
+    public abstract boolean isMovingWithoutCollision(ChessBoard chessBoard,
                                                      int line, int column,
-                                                     int toLine, int toColumn);*/
+                                                     int toLine, int toColumn);
 
 
 }
