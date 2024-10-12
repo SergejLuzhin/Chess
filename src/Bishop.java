@@ -19,6 +19,11 @@ public class Bishop extends ChessPiece{
     }
 
     @Override
+    public boolean isMovingWithoutCollision(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
+        return false;
+    }
+
+    @Override
     public String getSymbol() {
         if (color.equals("White")) return "B";
         else return "b";
