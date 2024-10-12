@@ -1,6 +1,7 @@
 public class ChessBoard {
     public ChessPiece[][] board = new ChessPiece[8][8];
     private String nowPlayer;
+    private String playerWon;
 
     public ChessBoard(String nowPlayer) {
         this.nowPlayer = nowPlayer;
@@ -22,6 +23,12 @@ public class ChessBoard {
                 else if (startLine == 7 && startColumn == 4) board[7][4].check = false;  //White King check switch
                 else if (startLine == 7 && startColumn == 0) board[7][0].check = false; //White Left Rook check switch
                 else if (startLine == 7 && startColumn == 7) board[7][7].check = false; //White Right Rook check witch
+
+                if (board[endLine][endColumn] != null){
+                    if (board[endLine][endColumn].getSymbol().equals("k")) playerWon = "White";
+                    else if (board[endLine][endColumn].getSymbol().equals("K")) playerWon = "Black";
+                }
+
                 board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
                 board[startLine][startColumn] = null; // set null to previous cell
                 this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
@@ -131,6 +138,13 @@ public class ChessBoard {
             System.out.println();
         }
         System.out.println("Player 1(White)");
+        if (playerWon != null){
+            System.out.println("Player " + playerWon + " has won! Congratulations!");
+        }
+    }
+
+    public String getPlayerWon(){
+        return playerWon;
     }
 
 }
