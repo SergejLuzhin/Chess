@@ -57,6 +57,7 @@ public class Main {
         while (true) {
             String s = scanner.nextLine();
             if (s.equals("exit")) break;
+            if (board.getPlayerWon() != null) break;
             else if (s.equals("replay")) {
                 System.out.println("Заново");
                 board = buildBoard();
