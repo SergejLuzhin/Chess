@@ -74,7 +74,7 @@ public class Main {
                         System.out.println("Рокировка удалась");
                         board.printBoard();
                     } else {
-                        System.out.println("Рокировка не удалась");
+                        System.out.println("Рокировка не удаmoлась");
                     }
                 } else if (s.contains("move")) {
                     String[] a = s.split(" ");
@@ -88,7 +88,8 @@ public class Main {
                             board.printBoard();
                         } else System.out.println("Передвижение не удалось");
                     } catch (Exception e) {
-                        System.out.println("Вы что-то ввели не так, попробуйте ещё раз");
+                        //System.out.println("Вы что-то ввели не так, попробуйте ещё раз");
+                        throw e;
                     }
 
                 }
