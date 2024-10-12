@@ -11,7 +11,9 @@ public class King extends ChessPiece{
 
     @Override
     public boolean canMoveToPosition(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        return movesInBoundaries(toLine, toColumn) && correctKingMove(line, column, toLine, toColumn);
+        return movesInBoundaries(toLine, toColumn) &&
+                correctKingMove(line, column, toLine, toColumn) &&
+                isMovingWithoutCollision(chessBoard, line, column, toLine, toColumn);
     }
 
     private boolean correctKingMove(int line, int column, int toLine, int toColumn){
@@ -25,7 +27,10 @@ public class King extends ChessPiece{
 
     @Override
     public boolean isMovingWithoutCollision(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        return false;
+        if (chessBoard.board[toLine][toColumn] == null) return true;
+        else {
+            return !chessBoard.board[toLine][toColumn].getColor().equals(chessBoard.board[line][column].getColor());
+        }
     }
 
     @Override
