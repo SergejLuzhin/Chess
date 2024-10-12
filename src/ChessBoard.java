@@ -16,16 +16,15 @@ public class ChessBoard {
             if (!nowPlayer.equals(board[startLine][startColumn].getColor())) return false;
 
             if (board[startLine][startColumn].canMoveToPosition(this, startLine, startColumn, endLine, endColumn)) {
-                board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
-                board[startLine][startColumn] = null; // set null to previous cell
-                this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
-
                 if (startLine == 0 && startColumn == 4) board[0][4].check = false;  //Black King check switch
                 else if (startLine == 0 && startColumn == 0) board[0][0].check = false; //Black Left Rook check switch
                 else if (startLine == 0 && startColumn == 7) board[0][7].check = false; //Black Right Rook check witch
                 else if (startLine == 7 && startColumn == 4) board[7][4].check = false;  //White King check switch
                 else if (startLine == 7 && startColumn == 0) board[7][0].check = false; //White Left Rook check switch
                 else if (startLine == 7 && startColumn == 7) board[7][7].check = false; //White Right Rook check witch
+                board[endLine][endColumn] = board[startLine][startColumn]; // if piece can move, we moved a piece
+                board[startLine][startColumn] = null; // set null to previous cell
+                this.nowPlayer = this.nowPlayerColor().equals("White") ? "Black" : "White";
 
                 return true;
             } else return false;
