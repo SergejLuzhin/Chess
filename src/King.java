@@ -22,7 +22,8 @@ public class King extends ChessPiece{
 
     //TO DO
     public boolean isUnderAttack(ChessBoard chessBoard, String color, int line, int column){
-        return isUnderAttackByPawn(chessBoard, color, line, column);
+        return isUnderAttackByPawn(chessBoard, color, line, column) ||
+                isUnderAttackByHorse(chessBoard, color, line, column);
     }
 
     private boolean isUnderAttackByPawn(ChessBoard chessBoard, String color, int line, int column){
@@ -30,10 +31,31 @@ public class King extends ChessPiece{
             for (int j = column - 1; j <= column + 1; j += 2){
                 if(chessBoard.checkPos(i) && chessBoard.checkPos(j)){
                     if(chessBoard.board[i][j] != null) {
-                        if (!color.equals(chessBoard.board[i][j].getColor())) return true;
+                        if (!color.equals(chessBoard.board[i][j].getColor()) && chessBoard.board[i][j].getSymbol().equalsIgnoreCase("p")) return true;
                     }
                 }
             }
+        }
+        return false;
+    }
+
+    private boolean isUnderAttackByHorse(ChessBoard chessBoard, String color, int line, int column){
+        int [][] possiblePositions = {
+                {line+2, column+1},
+                {line+1, column+2},
+                {line-1, column+2},
+                {line-2, column+1},
+                {line-2, column-1},
+                {line-1, column-2},
+                {line+1, column-2},
+                {line+2, column-1}
+        };
+        for (int i = 0; i < possiblePositions.length; i++){
+                if(chessBoard.checkPos(possiblePositions[i][0]) && chessBoard.checkPos(possiblePositions[i][1])){
+                    if(chessBoard.board[possiblePositions[i][0]][possiblePositions[i][1]] != null) {
+                        if (!color.equals(chessBoard.board[possiblePositions[i][0]][possiblePositions[i][1]].getColor()) && chessBoard.board[possiblePositions[i][0]][possiblePositions[i][1]].getSymbol().equalsIgnoreCase("h")) return true;
+                    }
+                }
         }
         return false;
     }
