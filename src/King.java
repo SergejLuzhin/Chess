@@ -23,7 +23,8 @@ public class King extends ChessPiece{
     //TO DO
     public boolean isUnderAttack(ChessBoard chessBoard, String color, int line, int column){
         return isUnderAttackByPawn(chessBoard, color, line, column) ||
-                isUnderAttackByHorse(chessBoard, color, line, column);
+                isUnderAttackByHorse(chessBoard, color, line, column) ||
+                isUnderAttackByBishop(chessBoard, color, line, column);
     }
 
     private boolean isUnderAttackByPawn(ChessBoard chessBoard, String color, int line, int column){
@@ -56,6 +57,62 @@ public class King extends ChessPiece{
                         if (!color.equals(chessBoard.board[possiblePositions[i][0]][possiblePositions[i][1]].getColor()) && chessBoard.board[possiblePositions[i][0]][possiblePositions[i][1]].getSymbol().equalsIgnoreCase("h")) return true;
                     }
                 }
+        }
+        return false;
+    }
+
+    private boolean isUnderAttackByBishop(ChessBoard chessBoard, String color, int line, int column){
+        //up left
+        int currentLine = line + 1;
+        int currentColumn = column - 1;
+        while (currentLine <= 7 && currentColumn >= 0){
+            if(chessBoard.board[currentLine][currentColumn] != null){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")){
+                    return true;
+                }
+                else break;
+            }
+            currentLine++;
+            currentColumn--;
+        }
+        //up right
+        currentLine = line + 1;
+        currentColumn = column + 1;
+        while (currentLine <= 7 && currentColumn <= 7){
+            if(chessBoard.board[currentLine][currentColumn] != null){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")){
+                    return true;
+                }
+                else break;
+            }
+            currentLine++;
+            currentColumn++;
+        }
+        //down right
+        currentLine = line - 1;
+        currentColumn = column + 1;
+        while (currentLine >= 0 && currentColumn <= 7){
+            if(chessBoard.board[currentLine][currentColumn] != null){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")){
+                    return true;
+                }
+                else break;
+            }
+            currentLine--;
+            currentColumn++;
+        }
+        //down left
+        currentLine = line - 1;
+        currentColumn = column - 1;
+        while (currentLine >= 0 && currentColumn >= 0){
+            if(chessBoard.board[currentLine][currentColumn] != null){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")){
+                    return true;
+                }
+                else break;
+            }
+            currentLine--;
+            currentColumn--;
         }
         return false;
     }
