@@ -25,7 +25,7 @@ public class King extends ChessPiece{
         return isUnderAttackByPawn(chessBoard, color, line, column) ||
                 isUnderAttackByHorse(chessBoard, color, line, column) ||
                 isUnderAttackByBishop(chessBoard, color, line, column) ||
-                isUnderAttackByRook(chessBoard, color, line, column);
+                isUnderAttackByRook(chessBoard, color, line, column);        //queen processed through bishop and rook
     }
 
     private boolean isUnderAttackByPawn(ChessBoard chessBoard, String color, int line, int column){
@@ -68,7 +68,10 @@ public class King extends ChessPiece{
         int currentColumn = column - 1;
         while (currentLine <= 7 && currentColumn >= 0){
             if(chessBoard.board[currentLine][currentColumn] != null){
-                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) &&
+                        ((chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")) ||
+                        (chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("q"))))
+                {
                     return true;
                 }
                 else break;
@@ -81,7 +84,10 @@ public class King extends ChessPiece{
         currentColumn = column + 1;
         while (currentLine <= 7 && currentColumn <= 7){
             if(chessBoard.board[currentLine][currentColumn] != null){
-                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) &&
+                        ((chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")) ||
+                        (chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("q"))))
+                {
                     return true;
                 }
                 else break;
@@ -94,7 +100,10 @@ public class King extends ChessPiece{
         currentColumn = column + 1;
         while (currentLine >= 0 && currentColumn <= 7){
             if(chessBoard.board[currentLine][currentColumn] != null){
-                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) &&
+                        ((chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")) ||
+                        (chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("q"))))
+                {
                     return true;
                 }
                 else break;
@@ -107,7 +116,10 @@ public class King extends ChessPiece{
         currentColumn = column - 1;
         while (currentLine >= 0 && currentColumn >= 0){
             if(chessBoard.board[currentLine][currentColumn] != null){
-                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) &&
+                        ((chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")) ||
+                        (chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("q"))))
+                {
                     return true;
                 }
                 else break;
@@ -124,7 +136,10 @@ public class King extends ChessPiece{
         int currentColumn = column;
         while (currentLine <= 7){
             if(chessBoard.board[currentLine][currentColumn] != null){
-                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("r")){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) &&
+                        ((chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")) ||
+                        (chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("q"))))
+                {
                     return true;
                 }
                 else break;
@@ -136,7 +151,10 @@ public class King extends ChessPiece{
         currentColumn = column + 1;
         while (currentColumn <= 7){
             if(chessBoard.board[currentLine][currentColumn] != null){
-                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("r")){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) &&
+                        ((chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")) ||
+                        (chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("q"))))
+                {
                     return true;
                 }
                 else break;
@@ -148,7 +166,10 @@ public class King extends ChessPiece{
         currentColumn = column;
         while (currentLine >= 0){
             if(chessBoard.board[currentLine][currentColumn] != null){
-                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("r")){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) &&
+                        ((chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")) ||
+                        (chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("q"))))
+                {
                     return true;
                 }
                 else break;
@@ -160,7 +181,10 @@ public class King extends ChessPiece{
         currentColumn = column - 1;
         while (currentColumn >= 0){
             if(chessBoard.board[currentLine][currentColumn] != null){
-                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) && chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("r")){
+                if(!chessBoard.board[currentLine][currentColumn].getColor().equals(color) &&
+                        ((chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("b")) ||
+                        (chessBoard.board[currentLine][currentColumn].getSymbol().equalsIgnoreCase("q"))))
+                {
                     return true;
                 }
                 else break;
