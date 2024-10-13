@@ -21,7 +21,20 @@ public class King extends ChessPiece{
     }
 
     //TO DO
-    public boolean isUnderAttack(ChessBoard chessBoard, int line, int column){
+    public boolean isUnderAttack(ChessBoard chessBoard, String color, int line, int column){
+        return isUnderAttackByPawn(chessBoard, color, line, column);
+    }
+
+    private boolean isUnderAttackByPawn(ChessBoard chessBoard, String color, int line, int column){
+        for (int i = line - 1; i <= line + 1; i += 2){
+            for (int j = column - 1; j <= column + 1; j += 2){
+                if(chessBoard.checkPos(i) && chessBoard.checkPos(j)){
+                    if(chessBoard.board[i][j] != null) {
+                        if (!color.equals(chessBoard.board[i][j].getColor())) return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 

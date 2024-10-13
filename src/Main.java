@@ -51,13 +51,19 @@ public class Main {
                'replay' - для перезапуска игры
                'castling0' или 'castling7' - для рокировки по соответствующей линии
                'move 1 1 2 3' - для передвижения фигуры с позиции 1 1 на 2 3(поле это двумерный массив от 0 до 7)
-               Проверьте могут ли фигуры ходить друг сквозь друга, корректно ли съедают друг друга, можно ли поставить шах и сделать рокировку?""");
+               Проверьте могут ли фигуры ходить друг сквозь друга, корректно ли съедают друг друга, можно ли поставить шах и сделать рокировку?
+               'debug 1 1 2 3' - для передвижения фигур в обход условий""");
         System.out.println();
         board.printBoard();
         while (true) {
+            if (board.getPlayerWon() != null) break;
+            if (new King("White").isUnderAttack(board,"White", board.getWhiteKingPosition()[0], board.getWhiteKingPosition()[1])){
+                System.out.println("White King is under attack");
+            } if (new King("Black").isUnderAttack(board, "Black", board.getBlackKingPosition()[0], board.getBlackKingPosition()[1])) {
+                System.out.println("Black King is under attack");
+            }
             String s = scanner.nextLine();
             if (s.equals("exit")) break;
-            if (board.getPlayerWon() != null) break;
             else if (s.equals("replay")) {
                 System.out.println("Заново");
                 board = buildBoard();
@@ -75,7 +81,7 @@ public class Main {
                         System.out.println("Рокировка удалась");
                         board.printBoard();
                     } else {
-                        System.out.println("Рокировка не удаmoлась");
+                        System.out.println("Рокировка не удалась");
                     }
                 } else if (s.contains("move")) {
                     String[] a = s.split(" ");
@@ -93,6 +99,22 @@ public class Main {
                         throw e;
                     }
 
+                }
+                else if (s.contains("debug")){
+                    String[] a = s.split(" ");
+                    try {
+                        int line = Integer.parseInt(a[1]);
+                        int column = Integer.parseInt(a[2]);
+                        int toLine = Integer.parseInt(a[3]);
+                        int toColumn = Integer.parseInt(a[4]);
+                        if (board.moveToPositionInDebugMode(line, column, toLine, toColumn)) {
+                            System.out.println("Успешно передвинулись");
+                            board.printBoard();
+                        } else System.out.println("Передвижение не удалось");
+                    } catch (Exception e) {
+                        //System.out.println("Вы что-то ввели не так, попробуйте ещё раз");
+                        throw e;
+                    }
                 }
             }
         }
