@@ -18,10 +18,9 @@ public class Horse extends ChessPiece {
 
     @Override
     public boolean isMovingWithoutCollision(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
-        if (chessBoard.board[toLine][toColumn] == null){
+        if (chessBoard.board[toLine][toColumn] == null) {
             return true;
-        }
-        else{
+        } else {
             return !(chessBoard.board[toLine][toColumn].getColor().equals(chessBoard.board[line][column].getColor()));
         }
     }

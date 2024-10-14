@@ -1,4 +1,4 @@
-public class Bishop extends ChessPiece{
+public class Bishop extends ChessPiece {
 
     public Bishop(String color) {
         super(color);
@@ -16,7 +16,7 @@ public class Bishop extends ChessPiece{
                 isMovingWithoutCollision(chessBoard, line, column, toLine, toColumn);
     }
 
-    private boolean correctBishopMove(int line, int column, int toLine, int toColumn){
+    private boolean correctBishopMove(int line, int column, int toLine, int toColumn) {
         return ((Math.abs(line - toLine) == Math.abs(column - toColumn)) && !(line == toLine || column == toColumn));
     }
 
@@ -24,10 +24,10 @@ public class Bishop extends ChessPiece{
     public boolean isMovingWithoutCollision(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         int currentLine;
         int currentColumn;
-        if (toLine > line && toColumn > column){
+        if (toLine > line && toColumn > column) {
             currentLine = line + 1;
             currentColumn = column + 1;
-            while (currentLine < toLine && currentColumn < toColumn){
+            while (currentLine < toLine && currentColumn < toColumn) {
                 if (chessBoard.board[currentLine][currentColumn] != null) return false;
                 currentLine++;
                 currentColumn++;
@@ -36,11 +36,10 @@ public class Bishop extends ChessPiece{
             else {
                 return !chessBoard.board[toLine][toColumn].getColor().equals(chessBoard.board[line][column].getColor());
             }
-        }
-        else if (toLine < line && toColumn > column){
+        } else if (toLine < line && toColumn > column) {
             currentLine = line - 1;
             currentColumn = column + 1;
-            while (currentLine > toLine && currentColumn < toColumn){
+            while (currentLine > toLine && currentColumn < toColumn) {
                 if (chessBoard.board[currentLine][currentColumn] != null) return false;
                 currentLine--;
                 currentColumn++;
@@ -49,11 +48,10 @@ public class Bishop extends ChessPiece{
             else {
                 return !chessBoard.board[toLine][toColumn].getColor().equals(chessBoard.board[line][column].getColor());
             }
-        }
-        else if (toLine < line && toColumn < column){
+        } else if (toLine < line && toColumn < column) {
             currentLine = line - 1;
             currentColumn = column - 1;
-            while (currentLine > toLine && currentColumn > toColumn){
+            while (currentLine > toLine && currentColumn > toColumn) {
                 if (chessBoard.board[currentLine][currentColumn] != null) return false;
                 currentLine--;
                 currentColumn--;
@@ -62,11 +60,10 @@ public class Bishop extends ChessPiece{
             else {
                 return !chessBoard.board[toLine][toColumn].getColor().equals(chessBoard.board[line][column].getColor());
             }
-        }
-        else if (toLine > line && toColumn < column){
+        } else if (toLine > line && toColumn < column) {
             currentLine = line + 1;
             currentColumn = column - 1;
-            while (currentLine < toLine && currentColumn > toColumn){
+            while (currentLine < toLine && currentColumn > toColumn) {
                 if (chessBoard.board[currentLine][currentColumn] != null) return false;
                 currentLine++;
                 currentColumn--;

@@ -2,8 +2,8 @@ public class ChessBoard {
     public ChessPiece[][] board = new ChessPiece[8][8];
     private String nowPlayer;
     private String playerWon;
-    private int[] whiteKingPosition = new int[] {0, 4};
-    private int[] blackKingPosition = new int[] {7, 4};
+    private int[] whiteKingPosition = new int[]{0, 4};
+    private int[] blackKingPosition = new int[]{7, 4};
 
     public ChessBoard(String nowPlayer) {
         this.nowPlayer = nowPlayer;
@@ -21,17 +21,16 @@ public class ChessBoard {
         return blackKingPosition;
     }
 
-    public boolean moveToPositionInDebugMode(int startLine, int startColumn, int endLine, int endColumn){
-        if (startLine == whiteKingPosition[0] && startColumn == whiteKingPosition[1]){
+    public boolean moveToPositionInDebugMode(int startLine, int startColumn, int endLine, int endColumn) {
+        if (startLine == whiteKingPosition[0] && startColumn == whiteKingPosition[1]) {
             whiteKingPosition[0] = endLine;
             whiteKingPosition[1] = endColumn;
-        }
-        else if (startLine == blackKingPosition[0] && startColumn == blackKingPosition[1]){
+        } else if (startLine == blackKingPosition[0] && startColumn == blackKingPosition[1]) {
             blackKingPosition[0] = endLine;
             blackKingPosition[1] = endColumn;
         }
 
-        if (board[endLine][endColumn] != null){
+        if (board[endLine][endColumn] != null) {
             if (board[endLine][endColumn].getSymbol().equals("k")) playerWon = "White";
             else if (board[endLine][endColumn].getSymbol().equals("K")) playerWon = "Black";
         }
@@ -55,16 +54,15 @@ public class ChessBoard {
                 else if (startLine == 7 && startColumn == 0) board[7][0].check = false; //Black Left Rook check switch
                 else if (startLine == 7 && startColumn == 7) board[7][7].check = false; //Black Right Rook check witch
 
-                if (startLine == whiteKingPosition[0] && startColumn == whiteKingPosition[1]){
+                if (startLine == whiteKingPosition[0] && startColumn == whiteKingPosition[1]) {
                     whiteKingPosition[0] = endLine;
                     whiteKingPosition[1] = endColumn;
-                }
-                else if (startLine == blackKingPosition[0] && startColumn == blackKingPosition[1]){
+                } else if (startLine == blackKingPosition[0] && startColumn == blackKingPosition[1]) {
                     blackKingPosition[0] = endLine;
                     blackKingPosition[1] = endColumn;
                 }
 
-                if (board[endLine][endColumn] != null){
+                if (board[endLine][endColumn] != null) {
                     if (board[endLine][endColumn].getSymbol().equals("k")) playerWon = "White";
                     else if (board[endLine][endColumn].getSymbol().equals("K")) playerWon = "Black";
                 }
@@ -159,7 +157,7 @@ public class ChessBoard {
     }
 
     public void printBoard() {  //print board in console
-        System.out.println("Turn " + nowPlayer);
+        System.out.println("\nTurn " + nowPlayer);
         System.out.println();
         System.out.println("Player 2(Black)");
         System.out.println();
@@ -178,12 +176,12 @@ public class ChessBoard {
             System.out.println();
         }
         System.out.println("Player 1(White)");
-        if (playerWon != null){
+        if (playerWon != null) {
             System.out.println("Player " + playerWon + " has won! Congratulations!");
         }
     }
 
-    public String getPlayerWon(){
+    public String getPlayerWon() {
         return playerWon;
     }
 
