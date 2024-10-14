@@ -1,4 +1,4 @@
-public class Rook extends ChessPiece{
+public class Rook extends ChessPiece {
 
     public Rook(String color) {
         super(color);
@@ -16,7 +16,7 @@ public class Rook extends ChessPiece{
                 isMovingWithoutCollision(chessBoard, line, column, toLine, toColumn);
     }
 
-    private boolean correctRookMove(int line, int column, int toLine, int toColumn){
+    private boolean correctRookMove(int line, int column, int toLine, int toColumn) {
         return ((column == toColumn && line != toLine) || (column != toColumn && line == toLine));
     }
 
@@ -24,10 +24,10 @@ public class Rook extends ChessPiece{
     public boolean isMovingWithoutCollision(ChessBoard chessBoard, int line, int column, int toLine, int toColumn) {
         int currentLine;
         int currentColumn;
-        if (toLine > line && toColumn == column){
+        if (toLine > line && toColumn == column) {
             currentLine = line + 1;
             currentColumn = column;
-            while (currentLine < toLine){
+            while (currentLine < toLine) {
                 if (chessBoard.board[currentLine][currentColumn] != null) return false;
                 currentLine++;
             }
@@ -35,11 +35,10 @@ public class Rook extends ChessPiece{
             else {
                 return !chessBoard.board[toLine][toColumn].getColor().equals(chessBoard.board[line][column].getColor());
             }
-        }
-        else if (toLine == line && toColumn > column){
+        } else if (toLine == line && toColumn > column) {
             currentLine = line;
             currentColumn = column + 1;
-            while (currentColumn < toColumn){
+            while (currentColumn < toColumn) {
                 if (chessBoard.board[currentLine][currentColumn] != null) return false;
                 currentColumn++;
             }
@@ -47,11 +46,10 @@ public class Rook extends ChessPiece{
             else {
                 return !chessBoard.board[toLine][toColumn].getColor().equals(chessBoard.board[line][column].getColor());
             }
-        }
-        else if (toLine < line && toColumn == column){
+        } else if (toLine < line && toColumn == column) {
             currentLine = line - 1;
             currentColumn = column;
-            while (currentLine > toLine){
+            while (currentLine > toLine) {
                 if (chessBoard.board[currentLine][currentColumn] != null) return false;
                 currentLine--;
             }
@@ -59,11 +57,10 @@ public class Rook extends ChessPiece{
             else {
                 return !chessBoard.board[toLine][toColumn].getColor().equals(chessBoard.board[line][column].getColor());
             }
-        }
-        else if (toLine == line && toColumn < column){
+        } else if (toLine == line && toColumn < column) {
             currentLine = line;
             currentColumn = column - 1;
-            while (currentColumn > toColumn){
+            while (currentColumn > toColumn) {
                 if (chessBoard.board[currentLine][currentColumn] != null) return false;
                 currentColumn--;
             }
@@ -72,7 +69,6 @@ public class Rook extends ChessPiece{
                 return !chessBoard.board[toLine][toColumn].getColor().equals(chessBoard.board[line][column].getColor());
             }
         }
-
         return false;
     }
 
